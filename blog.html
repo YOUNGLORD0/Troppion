@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog - Jenis Piala</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header Navigasi -->
+  <header class="navbar">
+    <div class="logo">TROPPION</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-home">Beranda</a></li>
+        <li><a href="profil.html" class="nav-profil">Profil</a></li>
+        <li><a href="blog.html" class="nav-blog">Blog</a></li>
+        <li><a href="kontak.html" class="nav-kontak">Kontak</a></li>
+      </ul>
+    </nav>
+    <input type="text" placeholder="Search..." class="search-box" />
+  </header>
+
+  <!-- Konten Blog -->
+  <section class="blog-container">
+    <h1>Jenis-Jenis Piala</h1>
+    <div class="blog-grid">
+      <!-- Semua item sudah dengan index yang sesuai -->
+      <div class="blog-item" onclick="showDetail(0)">
+        <img src="image/sepakbola1.jpg" alt="Piala 1" />
+        <h3>Piala Sepak Bola Gema Cup 2024 Ambon</h3>
+      </div>
+      <div class="blog-item" onclick="showDetail(1)">
+        <img src="image/sepakbola2.jpg" alt="Piala 2" />
+        <h3>Piala Bergilir Sepak Bola Irmao Timor</h3>
+      </div>
+      <div class="blog-item" onclick="showDetail(2)">
+        <img src="image/sepakbola3.jpg" alt="Piala 3" />
+        <h3>Piala Sepak Bola GM Football Championship HUT RI 79th PT KPI RU IV Cilacap</h3>
+      </div>
+      <div class="blog-item" onclick="showDetail(3)">
+        <img src="image/basket1.jpg" alt="Piala 4" />
+        <h3>Piala SOERABAJAYA CHAMPIONS LEAGUE</h3>
+      </div>
+      <div class="blog-item" onclick="showDetail(4)">
+        <img src="image/basket2.jpg" alt="Piala 5" />
+        <h3>Piala Cakra Sakti Basketball Club – PT Mitra Properti Sukses</h3>
+      </div>
+      <div class="blog-item" onclick="showDetail(5)">
+        <img src="image/basket3.jpg" alt="Piala 6" />
+        <h3>Piala Juara 1 Women’s Basketball Championship</h3>
+      </div>
+      <div class="blog-item" onclick="showDetail(6)">
+        <img src="image/futsal2.jpg" alt="Piala 7" />
+        <h3>Piala Sepak Bola Juara RSST Futsal Tournament 2024 Klaten</h3>
+      </div>
+      <div class="blog-item" onclick="showDetail(7)">
+        <img src="image/futsal3.jpg" alt="Piala 8" />
+        <h3>Piala Bergilir Turnamen Futsal Friend’s Bakery</h3>
+      </div>
+      <div class="blog-item" onclick="showDetail(8)">
+        <img src="image/basketpiala3.jpg" alt="Piala 9" />
+        <h3>Piala Sepak Bola Euro Futsal Campus Category Super Soccer 2024</h3>
+      </div>
+      <div class="blog-item" onclick="showDetail(9)">
+        <img src="image/esport1.jpg" alt="Piala 10" />
+        <h3>Piala Bergilir E-Sport Mobile Legends RS Persahabatan Jakarta</h3>
+      </div>
+      <div class="blog-item" onclick="showDetail(10)">
+        <img src="image/esport2.jpg" alt="Piala 11" />
+        <h3>Piala E-Sport M-Well Championship Mobile Legend Kudus</h3>
+      </div>
+      <div class="blog-item" onclick="showDetail(11)">
+        <img src="image/esport3.jpg" alt="Piala 12" />
+        <h3>Piala PBNC Champion</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Deskripsi -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modal-img" src="" alt="Gambar Piala" />
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="image/logotroppion.png" alt="Troppion Logo" />
+      <p>Merayakan setiap momen dengan keindahan dan personalisasi.</p>
+      <div class="footer-social">
+        <a href="#"><span>📘</span></a>
+        <a href="#"><span>🐦</span></a>
+        <a href="#"><span>📌</span></a>
+        <a href="#"><span>🟢</span></a>
+      </div>
+    </div>
+    <div class="footer-columns">
+      <div>
+        <h4>Hubungi Kami</h4>
+        <p>📞 +62 823-2448-2024</p>
+        <p>✉️ info@troppion.com</p>
+      </div>
+      <div>
+        <h4>Our Service</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Product</a></li>
+          <li><a href="#">Cara Order</a></li>
+          <li><a href="kontak.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Troppion</h4>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#">Syarat & Ketentuan</a></li>
+          <li><a href="#">Kebijakan Privasi</a></li>
+          <li><a href="#">Saran & Masukan</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
