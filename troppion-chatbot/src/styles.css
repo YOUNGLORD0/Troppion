@@ -1,0 +1,153 @@
+/* ===================== THEME TOKENS ===================== */
+:root{
+  --bg:#0b1020;            /* latar utama */
+  --panel:#0c1428;         /* latar panel/area */
+  --card:#0f1a33;          /* latar kartu/bubble */
+  --line:#1f2937;          /* garis/border */
+  --border:#1f2a44;        /* border kontras */
+
+  --text:#e5e7eb;          /* teks utama */
+  --muted:#9ca3af;         /* teks redup */
+
+  --accent:#ffa000;        /* tombol aksi */
+  --primary:#4f8cff;       /* aksen sekunder */
+
+  --ring:rgba(79,140,255,.35);
+  --glass:rgba(255,255,255,.03);
+  --glass-2:rgba(255,255,255,.06);
+  --shadow:0 10px 30px rgba(2,6,23,.28);
+}
+
+/* ===================== GLOBAL BASE ===================== */
+*{ box-sizing:border-box }
+html,body,#root{ height:100% }
+body,#root{
+  margin:0; color:var(--text);
+  background:
+    radial-gradient(1200px 800px at 10% -10%, rgba(79,140,255,.12), transparent 60%),
+    var(--bg);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+/* ===================== APP LAYOUT ===================== */
+.app{ height:100%; display:grid; grid-template-rows:auto 1fr auto }
+.grid{ display:grid; grid-template-columns:1fr 340px; gap:12px; padding:12px; height:100% }
+@media (max-width: 980px){ .grid{ grid-template-columns:1fr } }
+
+/* ===================== TOP BAR ===================== */
+header{
+  position:sticky; top:0; z-index:10;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:12px 16px; border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(79,140,255,.08), transparent);
+  backdrop-filter: blur(6px);
+}
+h1{ margin:0; font-size:18px; letter-spacing:.2px }
+.actions{ display:flex; gap:8px; align-items:center }
+.actions .ghost, .actions button{
+  background:var(--glass); color:var(--text);
+  border:1px solid var(--line); padding:8px 12px; border-radius:10px;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease, transform .06s ease;
+}
+.actions .ghost:hover, .actions button:hover{
+  border-color:var(--primary); background:var(--glass-2);
+  box-shadow:0 0 0 4px var(--ring);
+}
+.actions input.ghost{ width:160px }
+
+/* ===================== CHAT LIST ===================== */
+.chat{
+  padding:16px; overflow:auto; display:flex; flex-direction:column; gap:12px;
+  border:1px solid var(--line); border-radius:14px; background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), #0a1120;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+  scrollbar-width:thin;
+}
+.chat::-webkit-scrollbar{ width:10px }
+.chat::-webkit-scrollbar-thumb{ background:linear-gradient(var(--glass-2), var(--border)); border-radius:999px }
+.chat::-webkit-scrollbar-track{ background:transparent }
+
+/* ===================== MESSAGE BUBBLES ===================== */
+.msg{ display:grid; grid-template-columns:32px 1fr; gap:10px; align-items:flex-start; }
+.msg .avatar{
+  width:32px; height:32px; display:grid; place-items:center; border-radius:10px;
+  background:rgba(79,140,255,.14); border:1px solid rgba(79,140,255,.25);
+}
+.msg .bubble{
+  background:var(--card); border:1px solid var(--border); padding:12px; border-radius:14px; line-height:1.6;
+  box-shadow:0 1px 0 rgba(255,255,255,.03) inset;
+  animation:fadeIn .22s ease; 
+}
+.msg.user .bubble{
+  background:linear-gradient(180deg, rgba(79,140,255,.09), rgba(79,140,255,.03)), var(--card);
+  border-color: color-mix(in oklab, var(--primary) 22%, var(--border));
+}
+@keyframes fadeIn{ from{ opacity:0; transform:translateY(6px) } to{ opacity:1; transform:translateY(0) } }
+
+/* Markdown & code */
+.msg .bubble .content p{ margin:.3rem 0 }
+.msg .bubble .content a{ color:#89b4ff; text-decoration:none }
+.msg .bubble .content a:hover{ text-decoration:underline }
+.msg .bubble .content code{
+  background:#0a1020; border:1px solid var(--border); padding:.15rem .4rem; border-radius:8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size:.92em;
+}
+.msg .bubble .content pre{
+  background:#0a1020; padding:12px; border-radius:12px; overflow:auto; border:1px solid var(--border);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+}
+.msg .bubble .content pre code{ background:transparent; border:none; padding:0; font-size:.92em }
+.msg .bubble .content ul, .msg .bubble .content ol{ margin:.35rem 0 .35rem 1.25rem }
+.msg .bubble .content blockquote{
+  margin:.75rem 0; padding:.6rem .9rem; border-left:3px solid var(--primary);
+  background: rgba(79,140,255,.08); border-radius:10px;
+}
+
+/* Cursor blink saat streaming */
+[data-streaming="true"] .content::after{ content:'▌'; animation:blink 1s step-end infinite }
+@keyframes blink{ 50%{ opacity:0 } }
+
+/* ===================== RIGHT SIDEBAR / PANELS ===================== */
+aside{ display:flex; flex-direction:column; gap:12px }
+.panel{
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), var(--card);
+  border:1px solid var(--border); padding:12px; border-radius:12px; box-shadow: var(--shadow);
+}
+.panel .row{ display:flex; gap:8px; align-items:center; margin-bottom:8px }
+.panel textarea{
+  width:100%; min-height:110px; background:#0a1120; color:var(--text);
+  border:1px solid var(--border); border-radius:10px; padding:10px; outline:none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.panel textarea:focus{ border-color:var(--primary); box-shadow:0 0 0 4px var(--ring); background:rgba(255,255,255,.02) }
+
+/* ===================== INPUT / COMPOSER ===================== */
+.input{
+  position:sticky; bottom:0; z-index:10; backdrop-filter:blur(6px);
+  display:grid; grid-template-columns:1fr auto; gap:8px; padding:12px 16px;
+  border-top:1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), var(--panel);
+}
+.input input{
+  background:rgba(255,255,255,.02); border:1px solid var(--line); color:var(--text);
+  padding:12px 14px; border-radius:12px; outline:none;
+  transition:border-color .2s, box-shadow .2s, background .2s;
+}
+.input input:focus{ border-color:var(--primary); box-shadow:0 0 0 4px var(--ring); background:rgba(255,255,255,.04) }
+.input button{
+  background: linear-gradient(180deg, #ffb34a, #ff9b00); border:none; color:#111;
+  padding:12px 16px; border-radius:12px; font-weight:700; letter-spacing:.2px;
+  box-shadow: 0 6px 18px rgba(255,160,0,.25);
+  transition: transform .06s ease, box-shadow .2s ease, opacity .2s ease;
+}
+.input button:hover{ box-shadow: 0 10px 24px rgba(255,160,0,.32) }
+.input button:active{ transform: translateY(1px) }
+.input button:disabled{ opacity:.6; cursor:not-allowed }
+
+/* ===================== GHOST BUTTON (UTILITY) ===================== */
+button.ghost{
+  background:var(--glass); border:1px solid var(--line); color:var(--text);
+}
+button.ghost:hover{ border-color:var(--primary); background:var(--glass-2); box-shadow:0 0 0 4px var(--ring) }
+
+/* ===================== MISC ===================== */
+.typing{ opacity:.85; font-style:italic }

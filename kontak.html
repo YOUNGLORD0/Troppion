@@ -1,104 +1,296 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kontak - Troppion</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Troppion - Kontak</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Global theme (navbar, footer, tokens, dark/light) -->
+  <link rel="stylesheet" href="theme.css">
+  <script src="theme.js" defer></script>
+
+  <!-- Page-specific styles ONLY (tanpa navbar/footer) -->
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; color:var(--text); font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif; line-height:1.6}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    input, select, textarea{font:inherit}
+
+    /* Hero */
+    .contact-hero{max-width:1200px; margin:0 auto; padding:54px 20px 10px}
+    .kicker{color:var(--primary); font-weight:700; letter-spacing:.25em}
+    .contact-hero h1{font-family:Montserrat; font-size:clamp(36px,5vw,64px); line-height:1.05; margin:.2em 0}
+    .contact-hero p{color:var(--muted)}
+
+    /* Contact layout */
+    .contact-wrap{max-width:1200px; margin:0 auto; padding:0 20px 24px; display:grid; grid-template-columns:1.05fr .95fr; gap:16px}
+    .card{background:linear-gradient(180deg,#161b26,#121720); border:1px solid rgba(255,255,255,.06); border-radius:18px}
+    .card .body{padding:18px}
+
+    .info-grid{display:grid; gap:12px}
+    .row{display:flex; gap:10px; align-items:flex-start}
+    .row span{opacity:.9}
+    .map{aspect-ratio:16/9; border:0; width:100%; filter:grayscale(1) contrast(1.05); border-radius:14px}
+
+    form{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    label{font-size:14px; color:#c6c9d1}
+    .field{display:grid; gap:6px}
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea{
+      background:#0c0f15; color:#fff; border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:10px 12px;
+    }
+    textarea{min-height:120px; resize:vertical}
+    .full{grid-column:1 / -1}
+    .actions{display:flex; gap:10px; align-items:center}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.12); cursor:pointer}
+    .btn-primary{background:linear-gradient(180deg,#ffb547,#FFA000); color:#111; border:0; font-weight:700}
+    .btn-ghost:hover{background:rgba(255,255,255,.06)}
+    .hint{color:#9aa3b2; font-size:13px}
+
+    @media (max-width: 900px){.contact-wrap{grid-template-columns:1fr} form{grid-template-columns:1fr}}
+
+    /* FAQ band */
+    .faq{max-width:1200px; margin:8px auto 0; padding:0 20px}
+    .qa{background:linear-gradient(180deg,#161b25,#11151e); border:1px solid rgba(255,255,255,.06); border-radius:14px; margin:10px 0; overflow:hidden}
+    .qa summary{cursor:pointer; padding:14px 16px; list-style:none}
+    .qa .content{padding:0 16px 14px; color:var(--muted)}
+  </style>
 </head>
 <body>
+  <!-- ===== NAVBAR (styled by theme.css) ===== -->
+  <header class="navbar" aria-label="Navigasi utama">
+    <div class="nav-inner">
+      <button class="hamburger" id="hamburger" aria-label="Buka menu">☰</button>
+      <div class="logo" aria-label="Troppion Logo">TROPPION<span class="dot">.</span></div>
+      <nav aria-label="Menu">
+        <ul>
+          <li><a class="nav-link" href="Beranda.html">Beranda</a></li>
+          <li><a class="nav-link" href="produk.html">Produk</a></li>
+          <li><a class="nav-link" href="profil.html">Profil</a></li>
+          <li><a class="nav-link" href="blog.html">Blog</a></li>
+          <li><a class="nav-link active" href="kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+      <div class="spacer"></div>
+      <div class="search" role="search">
+        <input type="text" placeholder="Cari..." aria-label="Pencarian"/>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M21 21l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <button class="theme-toggle" data-theme-toggle aria-label="Ganti tema">🌙</button>
+    </div>
+  <!-- HERO -->
+  <section class="contact-hero">
+    <div class="kicker">KONTAK</div>
+    <h1>Hubungi Tim Troppion</h1>
+    <p>Kami siap membantu kebutuhan piala & plakat Anda—dari konsultasi desain sampai produksi.</p>
+  </section>
 
-  <!-- Header Navigasi -->
-  <header class="navbar">
-  <div class="logo">TROPPION</div>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html" class="nav-home">Beranda</a></li>
-      <li><a href="profil.html" class="nav-profil">Profil</a></li>
-      <li><a href="blog.html"class="nav-profil">blog</a></li>
-      <li><a href="kontak.html" class="nav-kontak">Kontak</a></li>
-    </ul>
-  </nav>
-  <input type="text" placeholder="Search..." class="search-box" />
-</header>
-
-  <!-- Bagian Kontak -->
-  <section class="contact-section">
-    <div class="contact-info">
-      <h4>We'd love to hear from you</h4>
-      <h1>Contact Us</h1>
-      <div class="divider"></div>
-      <p>Jurugentong, Gedongkuning, Jl. Gatotkaca II. Gedongkuning No.409,<br>
-        Banguntapan, Bantul Regency, Special Region of Yogyakarta 55198</p>
-
-      <div class="contact-methods">
-        <div>
-          <p>📞 +62823-2448-2024</p>
-          <p>✉️ info@troppion.com</p>
+  <!-- CONTENT -->
+  <section class="contact-wrap">
+    <!-- Info -->
+    <aside class="card reveal">
+      <div class="body">
+        <h3 style="font-family:Montserrat; margin:.2em 0 .4em">Kantor & Kontak</h3>
+        <div class="info-grid">
+          <div class="row"><span>📍</span> <div>Jurugentong, Gedongkuning, Jl. Gatotkaca II. Gedongkuning No.409, Banguntapan, Bantul, DIY 55198</div></div>
+          <div class="row"><span>📞</span> <div><a href="tel:+6282324482024">+62 823-2448-2024</a></div></div>
+          <div class="row"><span>✉️</span> <div><a href="mailto:info@troppion.com">info@troppion.com</a></div></div>
+          <div class="row"><span>⏰</span> <div>Senin–Jum'at, 08.30–16.30 WIB</div></div>
+          <div class="row"><span>⏰</span> <div>Sabtu, 08.00–16.00 WIB</div></div>
+          <div class="row"><span>🧭</span> <div><a href="https://www.google.com/maps/search/?api=1&query=Troppion+Gedongkuning" target="_blank" rel="noopener">Buka di Google Maps</a></div></div>
         </div>
-        <div>
-          <p>Social Networks</p>
-          <ul class="social-list">
-            <li>Facebook</li>
-            <li>Twitter</li>
-            <li>Pinterest</li>
+        <div style="margin-top:10px; border-radius:14px; overflow:hidden">
+          <iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=-7.824,110.392&hl=id&z=14&output=embed"
+            title="Peta lokasi"></iframe>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Form -->
+    <article class="card reveal">
+      <div class="body">
+        <h3 style="font-family:Montserrat; margin:.2em 0 .4em">Kirim Pesan</h3>
+        <form id="contactForm" novalidate>
+          <div class="field">
+            <label for="name">Nama</label>
+            <input id="name" name="name" type="text" placeholder="Nama lengkap" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="nama@contoh.com" required>
+          </div>
+          <div class="field">
+            <label for="phone">No. WhatsApp</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="08xxx" required>
+          </div>
+          <div class="field">
+            <label for="category">Kategori</label>
+            <select id="category" name="category">
+              <option value="Piala Umum">Piala Umum</option>
+              <option value="Piala Sepak Bola">Piala Sepak Bola</option>
+              <option value="Piala Basket">Piala Basket</option>
+              <option value="Piala Futsal">Piala Futsal</option>
+              <option value="E-Sport">E-Sport</option>
+              <option value="Plakat/Medali">Plakat/Medali</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="qty">Jumlah</label>
+            <input id="qty" name="qty" type="number" min="1" value="1">
+          </div>
+          <div class="field">
+            <label for="deadline">Deadline</label>
+            <input id="deadline" name="deadline" type="date">
+          </div>
+          <div class="field full">
+            <label for="message">Pesan</label>
+            <textarea id="message" name="message" placeholder="Ceritakan kebutuhan Anda (ukuran, bahan, warna, dll)"></textarea>
+            <div class="hint" id="counter">0/500</div>
+          </div>
+          <div class="full actions">
+            <button class="btn btn-primary" type="submit">Kirim via WhatsApp</button>
+            <button class="btn btn-ghost" type="button" id="emailBtn">Kirim via Email</button>
+          </div>
+        </form>
+        <p class="hint" style="margin-top:8px">Dengan mengirim pesan, Anda menyetujui kebijakan privasi kami.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" aria-label="Pertanyaan Umum">
+    <details class="qa reveal">
+      <summary>Berapa lama waktu produksi?</summary>
+      <div class="content">Umumnya 3–7 hari kerja tergantung jumlah & kompleksitas desain.</div>
+    </details>
+    <details class="qa reveal">
+      <summary>Apakah bisa custom dari desain sendiri?</summary>
+      <div class="content">Bisa. Kirimkan referensi/logo, kami bantu dari konsep sampai final.</div>
+    </details>
+    <details class="qa reveal">
+      <summary>Apakah ada contoh fisik (sample)?</summary>
+      <div class="content">Tersedia atas permintaan. Biaya sample dapat dipotong saat produksi massal.</div>
+    </details>
+  </section>
+
+  <!-- ===== FOOTER (styled by theme.css) ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="https://troppion.com/wp-content/uploads/2024/02/logo-TROPPION-emas-biru-1.png" alt="Troppion Logo" width="314" height="77"/>
+        <p>Merayakan setiap momen dengan keindahan dan personalisasi.</p>
+        <div style="display:flex; gap:10px; margin-top:8px">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="X/Twitter">🐦</a>
+          <a href="#" aria-label="Pinterest">📌</a>
+          <a href="#" aria-label="WhatsApp">🟢</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Hubungi Kami</h4>
+        <ul>
+          <li>📞 +62 823-2448-2024</li>
+          <li>✉️ info@troppion.com</li>
+        </ul>
+      </div>
+      <div class="footer-container">
+        <div class="fcol">
+          <h4>Layanan</h4>
+          <ul>
+            <li><a href="Beranda.html">Home</a></li>
+            <li><a href="profil.html">About Us</a></li>
+            <li><a href="produk.html">Our Product</a></li>
+            <li><a href="caraorder.html">Cara Order</a></li>
+            <li><a href="kontak.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="fcol">
+          <h4>Troppion</h4>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="syaratdanketentuan.html">Syarat & Ketentuan</a></li>
+            <li><a href="kebijakanprivasi.html">Kebijakan Privasi</a></li>
+            <li><a href="saranmasukan.html">Saran & Masukan</a></li>
           </ul>
         </div>
       </div>
     </div>
-
-    <div class="contact-form">
-      <h4>Send Us A Message</h4>
-      <div class="divider"></div>
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="someone@example.com" required />
-        <textarea rows="4" placeholder="Message" required></textarea>
-        <button type="submit">SEND MESSAGE</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-logo">
-      <img src="image/logotroppion.png" alt="Troppion Logo" />
-      <p>Merayakan setiap momen dengan keindahan dan personalisasi.</p>
-      <div class="footer-social">
-        <span>📘</span>
-        <span>🐦</span>
-        <span>📌</span>
-        <span>🟢</span>
-      </div>
-    </div>
-
-    <div class="footer-columns">
-      <div>
-        <h4>Hubungi Kami</h4>
-        <p>📞 +62 823-2448-2024</p>
-        <p>✉️ info@troppion.com</p>
-      </div>
-      <div>
-        <h4>Our Service</h4>
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Our Product</li>
-          <li>Cara Order</li>
-          <li>Contact</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Troppion</h4>
-        <ul>
-          <li>Blog</li>
-          <li>Syarat & Ketentuan</li>
-          <li>Kebijakan Privasi</li>
-          <li>Saran & Masukan</li>
-        </ul>
-      </div>
-    </div>
+    <div class="footnote">© <span id="year"></span> Troppion. All rights reserved.</div>
   </footer>
 
+  <!-- Floating Buttons -->
+  <a class="to-top" id="toTop" href="#top" aria-label="Kembali ke atas">↑</a>
+  <a class="whatsapp" href="https://wa.me/6285728527934?text=Halo%20Troppion%2C%20saya%20ingin%20konsultasi%20produk" target="_blank" rel="noopener" aria-label="Chat WhatsApp">Chat WhatsApp</a>
+
+  <!-- Page scripts (hamburger & tema sudah di theme.js) -->
+  <script>
+    // Intersection reveal
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(el=> el.target.classList.toggle('show', el.isIntersecting))
+    }, {threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Back to top visibility
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{toTop.style.display = window.scrollY>600? 'inline-flex':'none'});
+
+    // Year footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Form logic: build WhatsApp text and mailto
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('message');
+    const counter = document.getElementById('counter');
+    msg.addEventListener('input', ()=>{
+      const len = msg.value.length; if(len>500) msg.value = msg.value.slice(0,500);
+      counter.textContent = `${msg.value.length}/500`;
+    });
+
+    const WA_NUMBER = '6285728527934';
+
+    function buildMessage(){
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const cat = document.getElementById('category').value;
+      const qty = document.getElementById('qty').value;
+      const deadline = document.getElementById('deadline').value;
+      const text = document.getElementById('message').value.trim();
+      const dl = deadline? new Date(deadline).toLocaleDateString('id-ID') : '-';
+      return `Halo Troppion,%0A%0A`+
+             `Nama: ${encodeURIComponent(name)}%0A`+
+             `Email: ${encodeURIComponent(email)}%0A`+
+             `WA: ${encodeURIComponent(phone)}%0A`+
+             `Kategori: ${encodeURIComponent(cat)}%0A`+
+             `Jumlah: ${encodeURIComponent(qty)}%0A`+
+             `Deadline: ${encodeURIComponent(dl)}%0A`+
+             `Pesan: ${encodeURIComponent(text)}`;
+    }
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      const url = `https://wa.me/${WA_NUMBER}?text=${buildMessage()}`;
+      window.open(url, '_blank');
+    });
+
+    document.getElementById('emailBtn').addEventListener('click', ()=>{
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      const subject = encodeURIComponent('Permintaan Konsultasi Piala/Plakat - Troppion');
+      const body = decodeURIComponent(buildMessage()).replaceAll('%0A','\n');
+      window.location.href = `mailto:info@troppion.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
 </body>
 </html>

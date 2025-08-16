@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Troppion - Kebijakan Privasi</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Global theme (header, footer, tokens, dark/light) -->
+  <link rel="stylesheet" href="theme.css">
+  <script src="theme.js" defer></script>
+
+  <!-- Page-specific styles (tanpa navbar/footer) -->
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; color:var(--text); font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif; line-height:1.6}
+    a{color:inherit; text-decoration:none}
+
+    /* Hero Legal */
+    .legal-hero{max-width:1200px; margin:0 auto; padding:54px 20px 12px}
+    .kicker{color:var(--primary); font-weight:700; letter-spacing:.25em}
+    .legal-hero h1{font-family:Montserrat; font-size:clamp(32px,4.8vw,56px); line-height:1.08; margin:.2em 0}
+    .legal-hero p{color:var(--muted)}
+
+    /* Layout legal */
+    .legal-wrap{max-width:1200px; margin:0 auto; padding:0 20px 28px; display:grid; grid-template-columns:280px 1fr; gap:16px}
+    .toc{position:sticky; top:88px; align-self:start; background:linear-gradient(180deg,#161b26,#121720); border:1px solid rgba(255,255,255,.06); border-radius:16px}
+    .toc .body{padding:16px}
+    .toc strong{display:block; margin-bottom:8px}
+    .toc ol{margin:0; padding-left:18px; display:grid; gap:6px}
+    .toc a{color:var(--muted)}
+    .toc a:hover{color:#fff}
+
+    .legal-content{display:grid; gap:14px}
+    .card{background:linear-gradient(180deg,#161b26,#121720); border:1px solid rgba(255,255,255,.06); border-radius:16px; overflow:hidden}
+    .card .head{padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.06)}
+    .card .head h2{font-family:Montserrat; margin:.2em 0}
+    .card .body{padding:14px 16px}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .legal-wrap{grid-template-columns:1fr}
+      .toc{position:static}
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER (styled by theme.css, interaksi oleh theme.js) ===== -->
+  <header class="navbar" aria-label="Navigasi utama">
+    <div class="nav-inner">
+      <button class="hamburger" id="hamburger" aria-label="Buka menu">☰</button>
+      <div class="logo" aria-label="Troppion Logo">TROPPION<span class="dot">.</span></div>
+      <nav aria-label="Menu">
+        <ul>
+          <li><a class="nav-link" href="Beranda.html">Beranda</a></li>
+          <li><a class="nav-link" href="produk.html">Produk</a></li>
+          <li><a class="nav-link" href="profil.html">Profil</a></li>
+          <li><a class="nav-link" href="blog.html">Blog</a></li>
+          <li><a class="nav-link" href="kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+      <div class="spacer"></div>
+      <div class="search" role="search">
+        <input type="text" placeholder="Cari produk, artikel..." aria-label="Pencarian"/>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M21 21l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <button class="theme-toggle" data-theme-toggle aria-label="Ganti tema">🌙</button>
+
+     </div>
+
+  <!-- HERO -->
+  <section class="legal-hero">
+    <div class="kicker">LEGAL</div>
+    <h1>Kebijakan Privasi</h1>
+    <p>Kebijakan ini menjelaskan cara kami mengumpulkan, menggunakan, menyimpan, dan melindungi data Anda. Terakhir diperbarui: <span id="lastUpdate">9 Agustus 2025</span></p>
+  </section>
+
+  <!-- WRAP -->
+  <section class="legal-wrap">
+    <!-- TOC -->
+    <aside class="toc reveal" aria-label="Daftar isi">
+      <div class="body">
+        <strong>Daftar Isi</strong>
+        <ol>
+          <li><a href="#info-dikumpulkan">Informasi yang Kami Kumpulkan</a></li>
+          <li><a href="#penggunaan">Bagaimana Kami Menggunakan</a></li>
+          <li><a href="#pembagian">Pembagian Informasi</a></li>
+          <li><a href="#keamanan">Keamanan Data</a></li>
+          <li><a href="#hak">Hak Anda</a></li>
+          <li><a href="#retensi">Retensi Data</a></li>
+          <li><a href="#tautan">Tautan Eksternal</a></li>
+          <li><a href="#perubahan">Perubahan Kebijakan</a></li>
+          <li><a href="#kontak">Hubungi Kami</a></li>
+        </ol>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="legal-content">
+      <article id="info-dikumpulkan" class="card reveal">
+        <div class="head"><h2>1. Informasi yang Kami Kumpulkan</h2></div>
+        <div class="body">
+          <p>Saat Anda menggunakan layanan kami, kami dapat mengumpulkan:</p>
+          <div class="legal-subpoint"><strong>a. Informasi Pribadi</strong>
+            <ul>
+              <li>Nama, email, nomor telepon</li>
+              <li>Alamat pengiriman & penagihan</li>
+              <li>Informasi pembayaran (diproses via penyedia aman)</li>
+            </ul>
+          </div>
+          <div class="legal-subpoint"><strong>b. Informasi Pesanan & Desain</strong>
+            <ul>
+              <li>Detail produk yang dipesan (piala, medali, piagam)</li>
+              <li>Desain/brief yang diunggah</li>
+              <li>Logo, teks, atau elemen grafis</li>
+            </ul>
+          </div>
+          <div class="legal-subpoint"><strong>c. Informasi Teknis</strong>
+            <ul>
+              <li>IP, device, browser, waktu akses, halaman dikunjungi</li>
+              <li>Cookie untuk preferensi & pengalaman pengguna</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article id="penggunaan" class="card reveal">
+        <div class="head"><h2>2. Bagaimana Kami Menggunakan</h2></div>
+        <div class="body">
+          <ul>
+            <li>Memproses & mengirim pesanan</li>
+            <li>Membuat desain custom</li>
+            <li>Layanan pelanggan & komunikasi pesanan</li>
+            <li>Manajemen akun (jika ada)</li>
+            <li>Promosi/penawaran (dengan persetujuan)</li>
+            <li>Peningkatan situs & pengalaman pengguna</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="pembagian" class="card reveal">
+        <div class="head"><h2>3. Pembagian Informasi</h2></div>
+        <div class="body">
+          <p>Kami tidak menjual/menyewakan informasi pribadi. Informasi dapat dibagikan ke pihak ketiga untuk:</p>
+          <ul>
+            <li>Pengiriman (jasa kurir/logistik)</li>
+            <li>Pembayaran (mitra pembayaran)</li>
+            <li>Produksi/desain (dengan NDA bila perlu)</li>
+            <li>Kepatuhan hukum</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="keamanan" class="card reveal">
+        <div class="head"><h2>4. Keamanan Data</h2></div>
+        <div class="body">
+          <p>Kami menerapkan langkah teknis & administratif yang wajar. Namun tidak ada sistem yang sepenuhnya aman.</p>
+        </div>
+      </article>
+
+      <article id="hak" class="card reveal">
+        <div class="head"><h2>5. Hak Anda</h2></div>
+        <div class="body">
+          <ul>
+            <li>Akses & koreksi data</li>
+            <li>Meminta penghapusan data (kecuali keperluan hukum/proses pesanan)</li>
+            <li>Menolak komunikasi pemasaran kapan saja</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="retensi" class="card reveal">
+        <div class="head"><h2>6. Retensi Data</h2></div>
+        <div class="body">
+          <p>Data disimpan selama diperlukan untuk:</p>
+          <ul>
+            <li>Menuntaskan pesanan & layanan</li>
+            <li>Kepatuhan hukum/akuntansi</li>
+            <li>Garansi/pengembalian (bila berlaku)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="tautan" class="card reveal">
+        <div class="head"><h2>7. Tautan Eksternal</h2></div>
+        <div class="body">
+          <p>Situs kami mungkin berisi tautan ke situs lain. Kami tidak bertanggung jawab atas konten atau kebijakan privasi pihak ketiga.</p>
+        </div>
+      </article>
+
+      <article id="perubahan" class="card reveal">
+        <div class="head"><h2>8. Perubahan Kebijakan</h2></div>
+        <div class="body">
+          <p>Kebijakan dapat diperbarui sewaktu-waktu. Perubahan diumumkan di halaman ini dan berlaku sejak tanggal pembaruan.</p>
+        </div>
+      </article>
+
+      <article id="kontak" class="card reveal">
+        <div class="head"><h2>9. Hubungi Kami</h2></div>
+        <div class="body">
+          <ul class="contact-list">
+            <li>📧 Email: <a href="mailto:info@troppion.com">info@troppion.com</a></li>
+            <li>📞 Telepon: <a href="tel:+6282324482024">+62 823-2448-2024</a></li>
+            <li>📍 Alamat: Jurugentong, Gedongkuning – Wonocatur Jl. Gatotkaca No.409, Banguntapan, Bantul, DIY 55198</li>
+            <li>🌐 Website: <a href="https://www.troppion.com" target="_blank" rel="noopener">troppion.com</a></li>
+          </ul>
+          <p class="hint" style="color:var(--muted)">Terakhir diperbarui: <span id="legalYear">—</span></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER (styled by theme.css) ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="https://troppion.com/wp-content/uploads/2024/02/logo-TROPPION-emas-biru-1.png" alt="Troppion Logo" width="314" height="77"/>
+        <p>Merayakan setiap momen dengan keindahan dan personalisasi.</p>
+        <div style="display:flex; gap:10px; margin-top:8px">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="X/Twitter">🐦</a>
+          <a href="#" aria-label="Pinterest">📌</a>
+          <a href="#" aria-label="WhatsApp">🟢</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Hubungi Kami</h4>
+        <ul>
+          <li>📞 +62 823-2448-2024</li>
+          <li>✉️ info@troppion.com</li>
+        </ul>
+      </div>
+      <div class="footer-container">
+        <div class="fcol">
+          <h4>Layanan</h4>
+          <ul>
+            <li><a href="Beranda.html">Home</a></li>
+            <li><a href="profil.html">About Us</a></li>
+            <li><a href="produk.html">Our Product</a></li>
+            <li><a href="caraorder.html">Cara Order</a></li>
+            <li><a href="kontak.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="fcol">
+          <h4>Troppion</h4>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="syaratdanketentuan.html">Syarat & Ketentuan</a></li>
+            <li><a href="kebijakanprivasi.html">Kebijakan Privasi</a></li>
+            <li><a href="saranmasukan.html">Saran & Masukan</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footnote">© <span id="year"></span> Troppion. All rights reserved.</div>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <a class="to-top" id="toTop" href="#top" aria-label="Kembali ke atas">↑</a>
+  <a class="whatsapp" href="https://wa.me/6285728527934?text=Halo%20Troppion%2C%20saya%20ingin%20konsultasi%20produk" target="_blank" rel="noopener" aria-label="Chat WhatsApp">Chat WhatsApp</a>
+
+  <!-- Page scripts (tanpa logic hamburger/tema, sudah ditangani theme.js) -->
+  <script>
+    // Intersection reveal
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(el=> el.target.classList.toggle('show', el.isIntersecting))
+    }, {threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Back to top visibility
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{toTop.style.display = window.scrollY>600? 'inline-flex':'none'});
+
+    // Footer year & last update
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('legalYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

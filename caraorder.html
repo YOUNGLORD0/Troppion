@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Troppion - Cara Order</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Theme global -->
+  <link rel="stylesheet" href="theme.css">
+  <script src="theme.js" defer></script>
+
+  <!-- Page-specific styles -->
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; color:var(--text); font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif; line-height:1.6}
+    a{color:inherit; text-decoration:none}
+
+    /* Hero */
+    .flow-hero{max-width:1200px; margin:0 auto; padding:54px 20px 10px}
+    .kicker{color:var(--primary); font-weight:700; letter-spacing:.25em}
+    .flow-hero h1{font-family:Montserrat; font-size:clamp(36px,5vw,64px); line-height:1.05; margin:.2em 0}
+    .flow-hero p{color:var(--muted)}
+
+    /* Flow grid */
+    .flow-wrap{max-width:1200px; margin:0 auto; padding:0 20px 24px}
+    .flow-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; counter-reset:step}
+    .step{background:linear-gradient(180deg,#161b26,#121720); border:1px solid rgba(255,255,255,.06); border-radius:18px; padding:16px; position:relative; overflow:hidden}
+    .step::after{content:''; position:absolute; inset:auto -20% -40% -20%; height:120px; background:radial-gradient(220px 80px at 50% 100%, rgba(255,160,0,.12), transparent 60%)}
+    .badge{display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:999px; background:rgba(255,160,0,.16); color:#ffd38a; font-weight:700; border:1px solid rgba(255,160,0,.3); margin-bottom:8px}
+    .step h3{font-family:Montserrat; margin:.2em 0 .2em}
+    .step p{color:var(--muted); margin:0}
+    @media(max-width:900px){.flow-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.flow-grid{grid-template-columns:1fr}}
+
+    /* CTA band */
+    .cta{max-width:1200px; margin:8px auto; padding:0 20px}
+    .cta-inner{border:1px solid rgba(255,255,255,.08); border-radius:18px; background:linear-gradient(180deg,#161b25,#10151f); padding:20px; display:flex; gap:14px; align-items:center; justify-content:space-between}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.12); cursor:pointer}
+    .btn-primary{background:linear-gradient(180deg,#ffb547,#FFA000); color:#111; border:0; font-weight:700}
+
+    /* FAQ */
+    .faq{max-width:1200px; margin:8px auto 0; padding:0 20px}
+    .qa{background:linear-gradient(180deg,#161b25,#11151e); border:1px solid rgba(255,255,255,.06); border-radius:14px; margin:10px 0; overflow:hidden}
+    .qa summary{cursor:pointer; padding:14px 16px; list-style:none}
+    .qa .content{padding:0 16px 14px; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER dari theme.css ===== -->
+  <header class="navbar" aria-label="Navigasi utama">
+    <div class="nav-inner">
+      <button class="hamburger" id="hamburger" aria-label="Buka menu">☰</button>
+      <div class="logo" aria-label="Troppion Logo">TROPPION<span class="dot">.</span></div>
+      <nav aria-label="Menu">
+        <ul>
+          <li><a class="nav-link" href="Beranda.html">Beranda</a></li>
+          <li><a class="nav-link" href="produk.html">Produk</a></li>
+          <li><a class="nav-link" href="profil.html">Profil</a></li>
+          <li><a class="nav-link" href="blog.html">Blog</a></li>
+          <li><a class="nav-link" href="kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+      <div class="spacer"></div>
+      <div class="search" role="search">
+        <input type="text" placeholder="Cari produk, artikel..." aria-label="Pencarian"/>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 21l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/></svg>
+      </div>
+      <button class="theme-toggle" data-theme-toggle aria-label="Ganti tema">🌙</button>
+    </div>
+  <!-- HERO -->
+  <section class="flow-hero">
+    <div class="kicker">PANDUAN</div>
+    <h1>Cara Order</h1>
+    <p>Ikuti 9 langkah sederhana berikut untuk memesan piala/plakat custom di Troppion.</p>
+  </section>
+
+  <!-- FLOW GRID -->
+  <section class="flow-wrap">
+    <div class="flow-grid" aria-live="polite">
+      <article class="step reveal"><div class="badge">1</div><h3>Tentukan Desain</h3><p>Pilih dari katalog kami atau siapkan referensi/ide Anda.</p></article>
+      <article class="step reveal"><div class="badge">2</div><h3>Hubungi Kami</h3><p>Kontak via WhatsApp, telepon, atau email yang tertera.</p></article>
+      <article class="step reveal"><div class="badge">3</div><h3>Konsultasi Desain</h3><p>Kami bantu menyempurnakan konsep, bahan, ukuran, dan finishing.</p></article>
+      <article class="step reveal"><div class="badge">4</div><h3>Desain & Penawaran</h3><p>Terima sketsa/preview + rincian harga & estimasi waktu.</p></article>
+      <article class="step reveal"><div class="badge">5</div><h3>Persetujuan</h3><p>Setujui desain final untuk lanjut proses.</p></article>
+      <article class="step reveal"><div class="badge">6</div><h3>Pembayaran</h3><p>DP minimal 50% atau kirim PO/SPK institusi.</p></article>
+      <article class="step reveal"><div class="badge">7</div><h3>Produksi</h3><p>Produksi berjalan. Kami update progres secara berkala.</p></article>
+      <article class="step reveal"><div class="badge">8</div><h3>Pelunasan</h3><p>Lunasi sebelum pengiriman.</p></article>
+      <article class="step reveal"><div class="badge">9</div><h3>Pengiriman</h3><p>Kemas aman & kirim lewat ekspedisi yang disepakati.</p></article>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-inner reveal">
+      <div>
+        <h3 style="font-family:Montserrat; margin:.2em 0 .1em">Siap mulai sekarang?</h3>
+        <p style="color:var(--muted); margin:0">Kirim brief atau minta konsultasi gratis.</p>
+      </div>
+      <div style="display:flex; gap:10px">
+        <a class="btn btn-primary" href="https://wa.me/6285728527934?text=Halo%20Troppion%2C%20saya%20ingin%20memesan%20piala" target="_blank" rel="noopener">Chat WhatsApp</a>
+        <a class="btn" href="kontak.html">Form Kontak</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" aria-label="Pertanyaan Umum">
+    <details class="qa reveal">
+      <summary>Berapa lama waktu produksi?</summary>
+      <div class="content">Rata-rata 3–7 hari kerja tergantung jumlah dan kompleksitas desain.</div>
+    </details>
+    <details class="qa reveal">
+      <summary>Apakah bisa 1 pcs saja?</summary>
+      <div class="content">Bisa. Kami melayani satuan maupun jumlah besar.</div>
+    </details>
+    <details class="qa reveal">
+      <summary>Bisakah revisi desain?</summary>
+      <div class="content">Gratis revisi awal hingga sesuai brief, sebelum produksi dimulai.</div>
+    </details>
+  </section>
+
+  <!-- ===== FOOTER dari theme.css ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="https://troppion.com/wp-content/uploads/2024/02/logo-TROPPION-emas-biru-1.png" alt="Troppion Logo" width="314" height="77"/>
+        <p>Merayakan setiap momen dengan keindahan dan personalisasi.</p>
+        <div style="display:flex; gap:10px; margin-top:8px">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="X/Twitter">🐦</a>
+          <a href="#" aria-label="Pinterest">📌</a>
+          <a href="#" aria-label="WhatsApp">🟢</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Hubungi Kami</h4>
+        <ul>
+          <li>📞 +62 823-2448-2024</li>
+          <li>✉️ info@troppion.com</li>
+        </ul>
+      </div>
+      <div class="footer-container">
+        <div class="fcol">
+          <h4>Layanan</h4>
+          <ul>
+            <li><a href="Beranda.html">Home</a></li>
+            <li><a href="profil.html">About Us</a></li>
+            <li><a href="produk.html">Our Product</a></li>
+            <li><a href="caraorder.html">Cara Order</a></li>
+            <li><a href="kontak.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="fcol">
+          <h4>Troppion</h4>
+          <ul>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="syaratdanketentuan.html">Syarat & Ketentuan</a></li>
+            <li><a href="kebijakanprivasi.html">Kebijakan Privasi</a></li>
+            <li><a href="saranmasukan.html">Saran & Masukan</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footnote">© <span id="year"></span> Troppion. All rights reserved.</div>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <a class="to-top" id="toTop" href="#top" aria-label="Kembali ke atas">↑</a>
+  <a class="whatsapp" href="https://wa.me/6285728527934?text=Halo%20Troppion%2C%20saya%20ingin%20konsultasi%20produk" target="_blank" rel="noopener" aria-label="Chat WhatsApp">Chat WhatsApp</a>
+
+  <!-- Script -->
+  <script>
+    // Intersection reveal
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(el=> el.target.classList.toggle('show', el.isIntersecting))
+    }, {threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Back to top visibility
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{toTop.style.display = window.scrollY>600? 'inline-flex':'none'});
+
+    // Year footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

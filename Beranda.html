@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Troppion - Beranda</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- THEME FILES -->
+  <link rel="stylesheet" href="theme.css">
+  <script src="theme.js" defer></script>
+
+  <!-- Favicon & App Icons -->
+<link rel="icon" href="/image/favicon/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="https://YOUNGLORD0.github.io/Troppion/image/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/image/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/image/favicon/apple-touch-icon.png">
+<link rel="manifest" href="/image/favicon/site.webmanifest">
+
+<!-- SEO -->
+<meta name="robots" content="index, follow" />
+<meta name="description" content="Troppion menyediakan solusi suvenir & merchandise kustom berkualitas untuk perusahaan, event, dan komunitas. Desain rapi, bahan premium, dan layanan cepat." />
+<link rel="canonical" href="https://troppion.com/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Troppion - Suvenir & Merchandise Kustom Berkualitas">
+<meta property="og:description" content="Solusi suvenir & merchandise kustom untuk perusahaan, event, dan komunitas. Kualitas premium & layanan cepat.">
+<meta property="og:image" content="https://troppion.com/image/og-image.jpg">
+<meta property="og:url" content="https://troppion.com/">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Troppion - Suvenir & Merchandise Kustom Berkualitas">
+<meta name="twitter:description" content="Solusi suvenir & merchandise kustom untuk perusahaan, event, dan komunitas.">
+<meta name="twitter:image" content="https://troppion.com/image/og-image.jpg">
+
+
+  <!-- Page-specific styles ONLY -->
+  <style>
+    :root { --line: rgba(255,255,255,.06); }
+    html[data-theme="light"] { --line: rgba(0,0,0,.06); }
+
+    * { box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Roboto, system-ui, -apple-system, Segoe UI, Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; display: block }
+
+    /* ===== HERO ===== */
+    .hero{max-width:1200px; margin:auto; padding:64px 20px 32px; display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center}
+    .hero-kicker{color:var(--primary); font-weight:700; letter-spacing:.2em}
+    .hero h1{font-family:Montserrat; font-size:clamp(36px,5vw,64px); line-height:1.05; margin:.2em 0}
+    .hero h1 span{background:linear-gradient(90deg,#ffd38a, var(--primary) 40%, #ffcf4d 80%); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .hero p{color:var(--muted); font-size:clamp(16px,2.2vw,18px)}
+    .cta-row{display:flex; gap:12px; align-items:center; margin-top:18px}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:14px; border:1px solid var(--line); cursor:pointer; position:relative; overflow:hidden}
+    .btn-primary{background:linear-gradient(180deg,#ffb547,var(--primary)); color:#111; border:0; font-weight:700}
+    .btn-ghost:hover{background:rgba(0,0,0,.06)}
+    html[data-theme="dark"] .btn-ghost:hover{background:rgba(255,255,255,.06)}
+    .btn .ripple{position:absolute; border-radius:50%; transform:scale(0); animation:ripple .6s linear; background:rgba(255,255,255,.45)}
+    @keyframes ripple{to{transform:scale(4); opacity:0}}
+
+    .hero-art{position:relative}
+    .trophy-wrap{position:relative; filter:drop-shadow(0 20px 40px rgba(255,160,0,.2))}
+    .floating{animation:float 6s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .glow{position:absolute; inset:auto 0 -20px 0; height:40px; background:radial-gradient(60% 60% at 50% 50%, rgba(255,160,0,.35), transparent 70%); filter:blur(10px)}
+
+    /* BENEFITS */
+    .benefits{max-width:1200px;margin:8px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .benefit{display:flex;align-items:center;gap:12px;background:linear-gradient(180deg,#141a24,#121720);border:1px solid var(--line);padding:14px;border-radius:14px}
+    html[data-theme="light"] .benefit{background:#fff}
+    .benefit span{font-size:22px}
+    .benefit small{display:block;color:var(--muted)}
+    @media(max-width:900px){.benefits{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.benefits{grid-template-columns:1fr}}
+
+    /* QUICK CATEGORIES */
+    .quick-cats{max-width:1200px;margin:22px auto;padding:0 20px}
+    .qc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:12px}
+    .qc-head h2{font-family:Montserrat;margin:0}
+    .qc-head p{margin:.2em 0 0;color:var(--muted)}
+    .qc-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
+    .qc-item{background:linear-gradient(180deg,#161b25,#11151d);border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:6px;justify-items:start;transition:transform .18s}
+    html[data-theme="light"] .qc-item{background:#fff}
+    .qc-item:hover{transform:translateY(-3px)}
+    .qc-ico{font-size:22px}
+    .qc-item small{color:var(--muted)}
+    @media(max-width:1100px){.qc-grid{grid-template-columns:repeat(4,1fr)}}
+    @media(max-width:560px){.qc-grid{grid-template-columns:repeat(2,1fr)}}
+
+    /* ABOUT STRIP */
+    .about-strip{max-width:1200px;margin:16px auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+    .about-media img{border-radius:16px;border:1px solid var(--line)}
+    .about-text h3{font-family:Montserrat;margin:.2em 0}
+    .about-text p{color:var(--muted);margin:.4em 0 1em}
+    @media(max-width:900px){.about-strip{grid-template-columns:1fr}}
+
+    /* CATALOG */
+    .catalog{max-width:1200px;margin:20px auto;padding:0 20px}
+    .cat-head h2{font-family:Montserrat;margin:0}
+    .cat-head p{color:var(--muted);margin:.3em 0 10px}
+    .cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
+    .tab{background:transparent;border:1px solid var(--line);color:var(--text);padding:8px 12px;border-radius:999px;cursor:pointer}
+    .tab.active,.tab:hover{background:rgba(255,160,0,.14);border-color:rgba(255,160,0,.35)}
+    .catalog-cards{display:grid;grid-auto-flow:column;grid-auto-columns:calc(25% - 9px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+    .catalog-cards .card{scroll-snap-align:start;background:linear-gradient(180deg,#161b26,#121720); border:1px solid var(--line); border-radius:16px; overflow:hidden}
+    html[data-theme="light"] .catalog-cards .card{background:#fff}
+    .catalog-cards .card img{aspect-ratio:16/10; object-fit:cover}
+    .catalog-cards .card .body{padding:14px}
+    .badge{display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; background:rgba(255,160,0,.16); color:#a35a00}
+    html[data-theme="dark"] .badge{color:#ffd38a}
+    .catalog-cards .card h3{margin:10px 0 4px}
+    .catalog-cards .card p{color:var(--muted); margin:0}
+    @media(max-width:1100px){.catalog-cards{grid-auto-columns:calc(33.333% - 8px)}}
+    @media(max-width:900px){.catalog-cards{grid-auto-columns:calc(50% - 8px)}}
+    @media(max-width:560px){.catalog-cards{grid-auto-columns:100%}}
+
+    /* PROMO */
+    .promo-row{max-width:1200px;margin:8px auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .promo{display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(180deg,#151a25,#0f141d);border:1px solid var(--line);border-radius:16px;padding:16px}
+    html[data-theme="light"] .promo{background:#fff}
+    .promo h3{margin:.2em 0}
+    .promo p{margin:0;color:var(--muted)}
+    @media(max-width:900px){.promo-row{grid-template-columns:1fr}}
+
+    /* CTA SLAB */
+    .cta-slab{max-width:1200px;margin:16px auto;padding:0 20px;display:grid;grid-template-columns:1.2fr .8fr;gap:12px}
+    .cta-left,.cta-right{background:linear-gradient(180deg,#161b26,#121720);border:1px solid var(--line);border-radius:16px;padding:18px}
+    html[data-theme="light"] .cta-left, html[data-theme="light"] .cta-right{background:#fff}
+    .cta-left h3{font-family:Montserrat;margin:.2em 0}
+    .cta-left .rating{margin-top:10px;color:#a35a00}
+    html[data-theme="dark"] .cta-left .rating{color:#ffd38a}
+    .cta-right p{color:var(--muted)}
+    @media(max-width:900px){.cta-slab{grid-template-columns:1fr}}
+
+    /* PARTNERS */
+    .partners{max-width:1200px;margin:12px auto 20px;padding:0 20px}
+    .partners h4{font-family:Montserrat;margin:.2em 0 .8em}
+    .partners-row{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;align-items:center}
+    .partners-row img{filter:grayscale(1) contrast(1.1);opacity:.8;background:#0c0f15;border:1px solid var(--line);border-radius:12px;padding:10px}
+    html[data-theme="light"] .partners-row img{background:#fff}
+    @media(max-width:900px){.partners-row{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:560px){.partners-row{grid-template-columns:repeat(2,1fr)}}
+
+    /* SLIDER */
+    .slider{position:relative; max-width:1200px; margin:24px auto; padding:0 20px}
+    .slides{display:flex; gap:12px; overflow:hidden; transition:transform .4s ease}
+    .testi{min-width:100%; background:linear-gradient(180deg,#151a25,#0f141d); border:1px solid var(--line); padding:20px; border-radius:18px}
+    html[data-theme="light"] .testi{background:#fff}
+    .dots{display:flex; gap:8px; justify-content:center; margin-top:10px}
+    .dot{width:10px; height:10px; border-radius:50%; background:#333; border:1px solid rgba(255,255,255,.2); cursor:pointer}
+    html[data-theme="light"] .dot{background:#ddd; border-color:#bbb}
+    .dot.active{background:var(--primary)}
+
+    /* Floating action buttons */
+    .to-top,.whatsapp{
+      position:fixed; right:16px; display:inline-flex; align-items:center; justify-content:center;
+      width:44px;height:44px;border-radius:999px;border:1px solid var(--line); background:#1116;color:#fff;backdrop-filter:blur(6px);
+      bottom:16px; font-size:18px; text-decoration:none
+    }
+    .whatsapp{ right:16px; bottom:70px; width:auto; padding:0 12px; gap:8px }
+    html[data-theme="light"] .to-top, html[data-theme="light"] .whatsapp{ background:#fff; color:#111 }
+    /* ========= ADDITIONS: ANIMASI & MICRO-INTERACTIONS ========= */
+
+/* Animasi dasar */
+@keyframes fade-up { from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:translateY(0)} }
+@keyframes fade-in { from{opacity:0} to{opacity:1} }
+@keyframes slide-left { from{opacity:0; transform:translateX(16px)} to{opacity:1; transform:translateX(0)} }
+@keyframes glow-pulse { 0%,100%{box-shadow:0 0 0 rgba(255,160,0,0)} 50%{box-shadow:0 10px 25px rgba(255,160,0,.25)} }
+@keyframes gradient-sheen {
+  0% { background-position:0% 50% } 100% { background-position:100% 50% }
+}
+
+/* State awal untuk elemen yang akan di-reveal via IO */
+[data-animate]{opacity:0; will-change:transform, opacity}
+[data-animate].in{opacity:1; transform:none}
+
+/* Stagger util */
+.stagger-1{animation-delay:.05s} .stagger-2{animation-delay:.15s} .stagger-3{animation-delay:.28s} .stagger-4{animation-delay:.42s}
+
+/* Terapkan animasi ketika .in ditambahkan lewat JS */
+[data-animate="fade-up"].in{animation:fade-up .6s ease both}
+[data-animate="fade-in"].in{animation:fade-in .6s ease both}
+[data-animate="slide-left"].in{animation:slide-left .6s ease both}
+
+/* Hero candy */
+.hero::before{
+  content:""; position:absolute; inset:0 0 auto 0; height:320px; pointer-events:none;
+  background:radial-gradient(60% 120% at 10% 20%, rgba(255,160,0,.10), transparent 60%),
+             radial-gradient(40% 100% at 90% 10%, rgba(255,214,130,.08), transparent 60%);
+  z-index:-1;
+}
+
+/* Tombol: hover lift + pulse halus utk primary */
+.btn{transition:transform .18s ease, box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{animation:glow-pulse 2.6s ease-in-out infinite;}
+
+/* Ghost hover outline lembut */
+.btn-ghost{position:relative; overflow:hidden}
+.btn-ghost::after{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:linear-gradient(120deg, transparent, rgba(255,160,0,.18), transparent);
+  transform:translateX(-100%); transition:transform .5s ease;
+}
+.btn-ghost:hover::after{transform:translateX(100%)}
+
+/* Kartu katalog: tilt + depth */
+.catalog-cards .card{
+  transform-style:preserve-3d; transition:transform .2s ease, box-shadow .2s ease;
+  will-change:transform; perspective:800px;
+}
+.catalog-cards .card:hover{box-shadow:0 12px 30px rgba(0,0,0,.18)}
+
+/* Badge sedikit shimmer */
+.badge{
+  background:linear-gradient(90deg, rgba(255,160,0,.16), rgba(255,203,120,.24), rgba(255,160,0,.16));
+  background-size:200% 100%; animation:gradient-sheen 2.4s linear infinite;
+}
+
+/* Quick cat hover glow */
+.qc-item{box-shadow:0 0 0 rgba(255,160,0,0); transition:transform .18s ease, box-shadow .18s ease}
+.qc-item:hover{box-shadow:0 8px 24px rgba(255,160,0,.15)}
+
+/* Benefit & Promo: hover subtle lift */
+.benefit, .promo{transition:transform .18s ease, box-shadow .18s ease}
+.benefit:hover, .promo:hover{transform:translateY(-3px)}
+
+/* CTA slab kanan: focus ring lembut saat hover tombol */
+.cta-right .btn-primary:hover{box-shadow:0 10px 28px rgba(255,160,0,.35)}
+
+/* Partners: marquee container */
+.partners{overflow:hidden; position:relative}
+.partners-row{display:flex; gap:12px; will-change:transform}
+@keyframes marquee{from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.partners-row.marquee{animation:marquee 22s linear infinite}
+
+/* Scroll progress bar */
+.scroll-progress{
+  position:fixed; left:0; top:0; height:3px; width:0; z-index:9999;
+  background:linear-gradient(90deg, #ffb547, var(--primary));
+  box-shadow:0 0 10px rgba(255,160,0,.6);
+}
+
+/* Partikel di hero (kanvas) */
+#fx-dots{position:absolute; inset:0; pointer-events:none; mix-blend-mode:screen; opacity:.9}
+
+/* Aksesibilitas: prefer-reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important; transition:none!important}
+}
+
+  </style>
+</head>
+<script>
+/* ========= ADDITIONS: ANIMASI & MICRO-INTERACTIONS ========= */
+document.addEventListener('DOMContentLoaded', () => {
+  /* 1) Scroll progress bar */
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.appendChild(bar);
+  const setProg = () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+    bar.style.width = (scrolled * 100) + '%';
+  };
+  setProg(); window.addEventListener('scroll', setProg, {passive:true}); window.addEventListener('resize', setProg);
+
+  /* 2) Reveal on scroll (tanpa mengubah HTML: kita tambahkan atribut) */
+  const revealMap = [
+    ...document.querySelectorAll('.hero .hero-kicker, .hero h1, .hero p, .hero .cta-row'),
+    ...document.querySelectorAll('.benefits .benefit'),
+    ...document.querySelectorAll('.quick-cats .qc-item'),
+    ...document.querySelectorAll('.about-strip > *'),
+    ...document.querySelectorAll('.catalog .card'),
+    ...document.querySelectorAll('.promo-row .promo'),
+    ...document.querySelectorAll('.cta-slab > *'),
+    ...document.querySelectorAll('.partners-row img')
+  ];
+  revealMap.forEach((el, i) => {
+    el.setAttribute('data-animate', i < 4 ? 'fade-up' : 'fade-in');
+    if (i < 4) el.classList.add(`stagger-${Math.min(4, i+1)}`);
+  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, { threshold: .18 });
+  revealMap.forEach(el => io.observe(el));
+
+  /* 3) Kartu katalog: efek tilt mengikuti mouse */
+  const lerp = (a,b,t)=>a+(b-a)*t;
+  document.querySelectorAll('.catalog-cards .card').forEach(card => {
+    let rx = 0, ry = 0, tx = 0, ty = 0, raf;
+    const onMove = e => {
+      const r = card.getBoundingClientRect();
+      const cx = r.left + r.width/2, cy = r.top + r.height/2;
+      const dx = (e.clientX - cx) / (r.width/2), dy = (e.clientY - cy) / (r.height/2);
+      tx = dy * 6;   // rotateX
+      ty = -dx * 6;  // rotateY
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+    const onLeave = () => { tx = 0; ty = 0; if (!raf) raf = requestAnimationFrame(tick); };
+    const tick = () => {
+      rx = lerp(rx, tx, .18); ry = lerp(ry, ty, .18);
+      card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+      if (Math.abs(rx-tx) > .01 || Math.abs(ry-ty) > .01) { raf = requestAnimationFrame(tick); } else { raf = null; }
+    };
+    card.addEventListener('mousemove', onMove);
+    card.addEventListener('mouseleave', onLeave);
+  });
+
+  /* 4) Magnetic hover untuk tombol (sedikit mengikuti kursor) */
+  document.querySelectorAll('.btn').forEach(btn=>{
+    let mx=0,my=0, tx=0, ty=0, raf;
+    const lim = 6;
+    const move = e=>{
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - (r.left + r.width/2)) / (r.width/2);
+      const y = (e.clientY - (r.top + r.height/2)) / (r.height/2);
+      tx = Math.max(-1, Math.min(1, x)) * lim;
+      ty = Math.max(-1, Math.min(1, y)) * lim;
+      if(!raf) raf = requestAnimationFrame(tick);
+    };
+    const leave = ()=>{ tx=0; ty=0; if(!raf) raf=requestAnimationFrame(tick); };
+    const tick = ()=>{
+      mx += (tx - mx)*.18; my += (ty - my)*.18;
+      btn.style.transform = `translate(${mx}px, ${my}px)`;
+      if (Math.abs(mx-tx)>.1 || Math.abs(my-ty)>.1){ raf=requestAnimationFrame(tick); } else { raf=null; }
+    };
+    btn.addEventListener('mousemove', move);
+    btn.addEventListener('mouseleave', leave);
+  });
+
+  /* 5) Partikel berkilau di area hero */
+  const art = document.querySelector('.hero-art');
+  if (art){
+    const canvas = document.createElement('canvas'); canvas.id = 'fx-dots'; art.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    let w,h, dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    const dots = Array.from({length: 40}).map(()=>({
+      x: Math.random(), y: Math.random(), r: .8 + Math.random()*1.8,
+      a: .4 + Math.random()*.5, vx:(Math.random()-.5)*.0006, vy:(Math.random()-.5)*.0006
+    }));
+    const resize = ()=>{ w = canvas.clientWidth = art.clientWidth; h = canvas.clientHeight = art.clientHeight;
+      canvas.width = w*dpr; canvas.height = h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); };
+    resize(); window.addEventListener('resize', resize);
+    const loop = ()=>{
+      ctx.clearRect(0,0,w,h);
+      dots.forEach(p=>{
+        p.x += p.vx; p.y += p.vy;
+        if(p.x<0||p.x>1) p.vx*=-1; if(p.y<0||p.y>1) p.vy*=-1;
+        ctx.beginPath(); ctx.arc(p.x*w, p.y*h, p.r, 0, Math.PI*2);
+        const grad = ctx.createRadialGradient(p.x*w, p.y*h, 0, p.x*w, p.y*h, p.r*4);
+        grad.addColorStop(0, 'rgba(255,210,130,'+p.a+')');
+        grad.addColorStop(1, 'rgba(255,160,0,0)');
+        ctx.fillStyle = grad; ctx.fill();
+      });
+      requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  /* 6) Partners marquee (duplikasi elemen agar mulus) */
+  const pr = document.querySelector('.partners-row');
+  if (pr && !pr.classList.contains('marquee')){
+    const total = pr.children.length;
+    for(let i=0;i<total;i++){ pr.appendChild(pr.children[i].cloneNode(true)); }
+    pr.classList.add('marquee');
+  }
+});
+</script>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="navbar" aria-label="Navigasi utama">
+    <div class="nav-inner">
+      <!-- Tombol hamburger (muncul di <900px via CSS theme.css) -->
+      <div class="logo" aria-label="Troppion Logo">TROPPION<span class="dot">.</span></div>
+
+      <!-- Menu utama (disembunyikan di mobile lewat CSS) -->
+      <nav aria-label="Menu">
+        <ul>
+          <li><a class="nav-link active" href="Beranda.html">Beranda</a></li>
+          <li><a class="nav-link" href="produk.html">Produk</a></li>
+          <li><a class="nav-link" href="profil.html">Profil</a></li>
+          <li><a class="nav-link" href="blog.html">Blog</a></li>
+          <li><a class="nav-link" href="kontak.html">Kontak</a></li>
+        </ul>
+      </nav>
+
+      <div class="spacer"></div>
+
+      <div class="search" role="search">
+        <input type="text" placeholder="Cari produk..." aria-label="Pencarian"/>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 21l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <button class="theme-toggle" data-theme-toggle aria-label="Ganti Tema">🌙</button>
+    </div>
+
+  <!-- ===== HERO ===== -->
+  <main id="beranda" class="hero">
+    <section>
+      <div class="hero-kicker">TROPPION.COM</div>
+      <h1>Kustomisasi yang <span>Memukau</span></h1>
+      <p>Buat piala ideal untuk acara Anda—dari konsep hingga kreasi. Personalisasi setiap detail sesuai keinginan.</p>
+      <div class="cta-row">
+        <a href="kontak.html" class="btn btn-primary" data-ripple>Hubungi Kami</a>
+        <a href="produk.html" class="btn btn-ghost" data-ripple>Lihat Produk</a>
+      </div>
+    </section>
+    <aside class="hero-art">
+      <div class="trophy-wrap floating" id="parallax">
+        <img src="image/logoo.png" alt="Piala Emas" loading="eager"/>
+      </div>
+      <div class="glow" aria-hidden="true"></div>
+    </aside>
+  </main>
+
+  <!-- ===== BENEFITS ===== -->
+  <section class="benefits" aria-label="Keunggulan utama">
+    <div class="benefit"><span>⚡</span><div><strong>Respon Cepat</strong><small>Siap melayani 24 jam</small></div></div>
+    <div class="benefit"><span>📦</span><div><strong>Tepat Waktu</strong><small>Pengiriman seluruh Indonesia</small></div></div>
+    <div class="benefit"><span>🧾</span><div><strong>E-Faktur</strong><small>Urusan pajak dibantu</small></div></div>
+    <div class="benefit"><span>✅</span><div><strong>Garansi 100%</strong><small>Tidak sesuai? Ganti baru!</small></div></div>
+  </section>
+
+  <!-- ===== QUICK CATEGORIES ===== -->
+  <section id="kategori" class="quick-cats" aria-label="Berdasar Event & Material">
+    <header class="qc-head">
+      <div><h2>Berdasar Event & Material</h2><p>Temukan kategori populer untuk memulai pesanan Anda.</p></div>
+      <a href="produk.html" class="btn btn-ghost" data-ripple>Lihat semua kategori</a>
+    </header>
+    <div class="qc-grid">
+      <a class="qc-item" href="produk.html#olah-raga"><span class="qc-ico">🏆</span><strong>Piala Olahraga</strong><small>58+ Produk</small></a>
+      <a class="qc-item" href="produk.html#organisasi"><span class="qc-ico">👥</span><strong>Piala Organisasi</strong><small>36+ Produk</small></a>
+      <a class="qc-item" href="produk.html#karyawan"><span class="qc-ico">💼</span><strong>Piala Karyawan</strong><small>42+ Produk</small></a>
+      <a class="qc-item" href="produk.html#set"><span class="qc-ico">🎯</span><strong>Piala Set</strong><small>30+ Produk</small></a>
+      <a class="qc-item" href="produk.html#kristal"><span class="qc-ico">💎</span><strong>Plakat Kristal</strong><small>50+ Produk</small></a>
+      <a class="qc-item" href="produk.html#kayu"><span class="qc-ico">🪵</span><strong>Plakat Kayu</strong><small>28+ Produk</small></a>
+      <a class="qc-item" href="produk.html#logam"><span class="qc-ico">🥇</span><strong>Piala Logam</strong><small>40+ Produk</small></a>
+      <a class="qc-item" href="produk.html#medali"><span class="qc-ico">🎖️</span><strong>Medali</strong><small>80+ Produk</small></a>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT STRIP ===== -->
+  <section class="about-strip">
+    <div class="about-media"><img src="image/sepakbola/pialasepakbola17.jpg" alt="Workshop Troppion" loading="lazy"></div>
+    <div class="about-text">
+      <h3>Tentang TROPPION</h3>
+      <p>100% produksi lokal dengan standar kualitas tinggi...</p>
+      <a href="profil.html" class="btn btn-primary" data-ripple>Lebih Lanjut Tentang Kami</a>
+    </div>
+  </section>
+
+  <!-- ===== CATALOG ===== -->
+  <section class="catalog" aria-label="Koleksi Pilihan">
+    <div class="cat-head"><h2>Set Piala Custom</h2><p>Tingkatkan prestise acara Anda...</p></div>
+    <div class="cat-tabs" role="tablist" aria-label="Filter Produk">
+      <button class="tab active" data-filter="all" role="tab">Semua</button>
+      <button class="tab" data-filter="umum" role="tab">Piala Umum</button>
+      <button class="tab" data-filter="sepakbola" role="tab">Piala Sepak Bola</button>
+      <button class="tab" data-filter="kristal" role="tab">Plakat Kristal</button>
+      <button class="tab" data-filter="medali" role="tab">Medali</button>
+    </div>
+    <div class="catalog-cards">
+      <article class="card" data-cat="umum"><img src="image/esport/esport2.jpg" alt="Piala Umum"/><div class="body"><span class="badge">Best Seller</span><h3>Piala Umum</h3><p>Elegan untuk berbagai acara.</p></div></article>
+      <article class="card" data-cat="sepakbola"><img src="image/sepakbola/pialasepakbola8.jpg" alt="Piala Sepak Bola"/><div class="body"><span class="badge">Sport</span><h3>Piala Sepak Bola</h3><p>Desain dinamis & modern.</p></div></article>
+      <article class="card" data-cat="kristal"><img src="image/plakat-kristal.webp" alt="Plakat Kristal"/><div class="body"><span class="badge">Premium</span><h3>Plakat Kristal</h3><p>Kilau mewah, ideal penghargaan.</p></div></article>
+      <article class="card" data-cat="medali"><img src="image/medali-custom.webp" alt="Medali Custom"/><div class="body"><span class="badge">Event</span><h3>Medali Custom</h3><p>Bebas bentuk & warna.</p></div></article>
+    </div>
+  </section>
+
+  <!-- ===== PROMO ===== -->
+  <section class="promo-row" aria-label="Penawaran">
+    <article class="promo promo-a"><div><h3>Ikonik & Personalisasi</h3><p>Gratis konsultasi desain...</p></div><a href="kontak.html" class="btn btn-ghost" data-ripple>Pesan Sekarang →</a></article>
+    <article class="promo promo-b"><div><h3>Lebih Hemat Hingga 10%</h3><p>Diskon untuk pemesanan jumlah banyak.</p></div><a href="kontak.html" class="btn btn-ghost" data-ripple>Dapatkan Penawaran →</a></article>
+  </section>
+
+  <!-- ===== CTA SLAB ===== -->
+  <section class="cta-slab">
+    <div class="cta-left"><h3>Memberi Anda layanan berkualitas</h3><p>Kami siap berkolaborasi...</p><div class="rating">★ ★ ★ ★ ★ <small>5.0 • Google Review</small></div></div>
+    <div class="cta-right"><p><strong>Diskusikan proyek Anda sekarang!</strong></p><p>Kami siap bedah kebutuhan...</p><a href="kontak.html" class="btn btn-primary" data-ripple>Konsultasi Gratis</a></div>
+  </section>
+
+  <!-- ===== PARTNERS ===== -->
+  <section class="partners" aria-label="Kolaborasi dengan Industri Terbaik">
+    <h4>Kolaborasi dengan Industri Terbaik</h4>
+    <div class="partners-row">
+      <img src="image/logo1.webp" alt="Logo partner">
+      <img src="image/logo2.webp" alt="Logo partner">
+      <img src="image/logo3.webp" alt="Logo partner">
+      <img src="image/logo4.webp" alt="Logo partner">
+      <img src="image/logo1.webp" alt="Logo partner">
+      <img src="image/logo2.webp" alt="Logo partner">
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="https://troppion.com/wp-content/uploads/2024/02/logo-TROPPION-emas-biru-1.png" alt="Troppion Logo" width="314" height="77"/>
+        <p>Merayakan setiap momen dengan keindahan dan personalisasi.</p>
+        <div style="display:flex; gap:10px; margin-top:8px">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="X/Twitter">🐦</a>
+          <a href="#" aria-label="Pinterest">📌</a>
+          <a href="#" aria-label="WhatsApp">🟢</a>
+        </div>
+      </div>
+      <div class="fcol"><h4>Hubungi Kami</h4><ul><li>📞 +62 823-2448-2024</li><li>✉️ info@troppion.com</li></ul></div>
+      <div class="footer-container">
+        <div class="fcol"><h4>Layanan</h4><ul><li><a href="Beranda.html">Home</a></li><li><a href="profil.html">About Us</a></li><li><a href="produk.html">Our Product</a></li><li><a href="caraorder.html">Cara Order</a></li><li><a href="kontak.html">Contact</a></li></ul></div>
+        <div class="fcol"><h4>Troppion</h4><ul><li><a href="blog.html">Blog</a></li><li><a href="syaratdanketentuan.html">Syarat & Ketentuan</a></li><li><a href="kebijakanprivasi.html">Kebijakan Privasi</a></li><li><a href="saranmasukan.html">Saran & Masukan</a></li></ul></div>
+      </div>
+    </div>
+    <div class="footnote">© <span id="year"></span> Troppion. All rights reserved.</div>
+  </footer>
+
+  <!-- FABs -->
+  <a class="to-top" id="toTop" href="#beranda" aria-label="Kembali ke atas">↑</a>
+  <a class="whatsapp" href="https://wa.me/6285728527934?text=Halo%20Troppion%2C%20saya%20ingin%20konsultasi%20produk" target="_blank" rel="noopener" aria-label="Chat WhatsApp">Chat WhatsApp</a>
+
+  <!-- Page-specific scripts ONLY (tidak include logic sidebar/tema) -->
+  <script>
+    // Active link on scroll (untuk anchor internal; bisa dihapus kalau tidak dipakai)
+    const sections = document.querySelectorAll('main, section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const setActive = () => {
+      let top = window.scrollY + 100;
+      sections.forEach(sec=>{
+        const id = sec.getAttribute('id');
+        if(!id) return;
+        const off = sec.offsetTop; const h = sec.offsetHeight;
+        const isIn = top >= off && top < off + h;
+        navLinks.forEach(l=>{if(l.getAttribute('href') === '#' + id) l.classList.toggle('active', isIn)});
+      })
+    };
+    window.addEventListener('scroll', setActive);
+
+    // Ripple buttons
+    document.querySelectorAll('[data-ripple]').forEach(btn=>{
+      btn.addEventListener('click', function(e){
+        const circle = document.createElement('span'); circle.className='ripple'; this.appendChild(circle);
+        const d = Math.max(this.clientWidth, this.clientHeight);
+        circle.style.width = circle.style.height = d + 'px';
+        const rect = this.getBoundingClientRect();
+        circle.style.left = (e.clientX - rect.left - d/2) + 'px';
+        circle.style.top = (e.clientY - rect.top - d/2) + 'px';
+        setTimeout(()=>circle.remove(), 600);
+      })
+    });
+
+    // Parallax trophy (hero)
+    const par = document.getElementById('parallax');
+    window.addEventListener('mousemove', (e)=>{
+      if(!par) return;
+      const x = (e.clientX / window.innerWidth - .5) * 10;
+      const y = (e.clientY / window.innerHeight - .5) * 10;
+      par.style.transform = `translate(${x}px, ${-y}px)`;
+    });
+
+    // Intersection reveal (opsional kalau pakai .reveal)
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(el=> el.target.classList.toggle('show', el.isIntersecting))
+    }, {threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Counters (jika ada .counter)
+    const counters = document.querySelectorAll('.counter');
+    const countIo = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const el = entry.target; const to = parseInt(el.dataset.to,10); let cur=0;
+          const step = Math.ceil(to/50);
+          const int = setInterval(()=>{cur += step; if(cur>=to){cur=to; clearInterval(int)} el.textContent = cur}, 20);
+          countIo.unobserve(el);
+        }
+      })
+    },{threshold:.6});
+    counters.forEach(c=>countIo.observe(c));
+
+    // Testimonials slider (kalau elemen tersedia)
+    const slides = document.getElementById('slides');
+    const dotsWrap = document.getElementById('dots');
+    if (slides && dotsWrap){
+      const total = slides.children.length;
+      let idx = 0; let timer;
+      const go = (i)=>{idx = (i+total)%total; slides.style.transform = `translateX(-${idx*100}%)`;[...dotsWrap.children].forEach((d,j)=>d.classList.toggle('active', j===idx))}
+      for(let i=0;i<total;i++){const d=document.createElement('button');d.className='dot'+(i===0?' active':'');d.addEventListener('click',()=>{go(i); restart()});dotsWrap.appendChild(d)}
+      const next=()=>go(idx+1);
+      const start=()=>timer=setInterval(next, 4500);
+      const stop=()=>clearInterval(timer);
+      const restart=()=>{stop(); start()};
+      slides.addEventListener('mouseenter', stop); slides.addEventListener('mouseleave', start);
+      start();
+    }
+
+    // Back to top visibility
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{if(toTop) toTop.style.display = window.scrollY>600? 'inline-flex':'none'});
+
+    // Year pada footer
+    const yEl = document.getElementById('year'); if (yEl) yEl.textContent = new Date().getFullYear();
+
+    // Filter katalog (tab)
+    document.querySelectorAll('.cat-tabs .tab').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.cat-tabs .tab').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.catalog-cards .card').forEach(c=>{
+          const show = f==='all' || c.dataset.cat===f;
+          c.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
