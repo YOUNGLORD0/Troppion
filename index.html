@@ -47,6 +47,7 @@
 
     * { box-sizing: border-box }
     html { scroll-behavior: smooth }
+    
     body {
       margin: 0;
       color: var(--text);
@@ -162,6 +163,21 @@
     .dot{width:10px; height:10px; border-radius:50%; background:#333; border:1px solid rgba(255,255,255,.2); cursor:pointer}
     html[data-theme="light"] .dot{background:#ddd; border-color:#bbb}
     .dot.active{background:var(--primary)}
+    /* Chatbot CTA */
+.chatbot-cta{max-width:1200px;margin:18px auto 12px;padding:0 20px}
+.chatbot-cta .cb-box{
+  display:flex;gap:16px;align-items:center;justify-content:space-between;
+  background:linear-gradient(180deg,#161b26,#121720);
+  border:1px solid var(--line); border-radius:16px; padding:16px 18px;
+}
+html[data-theme="light"] .chatbot-cta .cb-box{background:#fff}
+.chatbot-cta h3{font-family:Montserrat;margin:.2em 0}
+.chatbot-cta p{margin:.2em 0;color:var(--muted)}
+.chatbot-cta .cb-actions{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:800px){
+  .chatbot-cta .cb-box{flex-direction:column;align-items:flex-start}
+}
+
 
     /* Floating action buttons */
     .to-top,.whatsapp{
@@ -496,6 +512,17 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="cta-left"><h3>Memberi Anda layanan berkualitas</h3><p>Kami siap berkolaborasi...</p><div class="rating">★ ★ ★ ★ ★ <small>5.0 • Google Review</small></div></div>
     <div class="cta-right"><p><strong>Diskusikan proyek Anda sekarang!</strong></p><p>Kami siap bedah kebutuhan...</p><a href="kontak.html" class="btn btn-primary" data-ripple>Konsultasi Gratis</a></div>
   </section>
+  <section id="chatbot-section" class="reveal">
+  <!-- Ornamenn background -->
+  <span class="bg-orb orb1" aria-hidden="true"></span>
+  <span class="bg-orb orb2" aria-hidden="true"></span>
+
+  <div class="chatbot-container">
+    <h2>Akses Chatbot</h2>
+    <p>Klik tombol di bawah untuk membuka halaman chatbot Anda.</p>
+    <a href="chatbot.html" class="btn-chatbot"><span>Buka Chatbot</span></a>
+  </div>
+</section>
 
   <!-- ===== PARTNERS ===== -->
   <section class="partners" aria-label="Kolaborasi dengan Industri Terbaik">
@@ -509,7 +536,19 @@ document.addEventListener('DOMContentLoaded', () => {
       <img src="image/logo2.webp" alt="Logo partner">
     </div>
   </section>
-
+<script>
+  // Tombol "Buka Chatbot" membuka panel widget; fallback ke halaman chatbot
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-open-chatbot]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const host = document.getElementById('troppion-chatbot-host');
+        const shadowBtn = host?.shadowRoot?.querySelector('.tc-btn');
+        if (shadowBtn) shadowBtn.click();      // buka panel widget
+        else window.location.href = 'chatbot.html'; // fallback
+      });
+    });
+  });
+</script>
   <!-- ===== FOOTER ===== -->
   <footer>
     <div class="footer-inner">
@@ -611,25 +650,6 @@ document.addEventListener('DOMContentLoaded', () => {
       start();
     }
 
-    // Back to top visibility
-    const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', ()=>{if(toTop) toTop.style.display = window.scrollY>600? 'inline-flex':'none'});
-
-    // Year pada footer
-    const yEl = document.getElementById('year'); if (yEl) yEl.textContent = new Date().getFullYear();
-
-    // Filter katalog (tab)
-    document.querySelectorAll('.cat-tabs .tab').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        document.querySelectorAll('.cat-tabs .tab').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        document.querySelectorAll('.catalog-cards .card').forEach(c=>{
-          const show = f==='all' || c.dataset.cat===f;
-          c.style.display = show ? '' : 'none';
-        });
-      });
-    });
-  </script>
+</script>
 </body>
 </html>

@@ -151,3 +151,17 @@ button.ghost:hover{ border-color:var(--primary); background:var(--glass-2); box-
 
 /* ===================== MISC ===================== */
 .typing{ opacity:.85; font-style:italic }
+
+.back-btn{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 12px; border-radius:10px;
+  background:#FFA000; color:#0a0a0a; text-decoration:none;
+  border:1px solid var(--border);
+  font-family: 'Montserrat', system-ui, sans-serif; font-weight:600; font-size:14px;
+  transition: background .15s ease, border-color .15s ease, transform .06s;
+  margin-left:10px;
+}
+.back-btn:hover{ background:#e69100; border-color:#333 }
+.back-btn:active{ transform:translateY(1px) }
+.back-btn:focus{ outline:none; box-shadow:0 0 0 3px rgba(255,160,0,.25) }
+.back-btn:visited{ color:#0a0a0a } /* pastikan tidak berubah ungu */

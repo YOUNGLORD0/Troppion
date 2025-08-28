@@ -228,3 +228,137 @@ footer {
   height: auto;
   max-width: clamp(280px, 90%, 420px); /* fleksibel di mobile & desktop */
 }
+
+#chatbot-section {
+  position: relative;
+  overflow: hidden;
+  padding: 56px 24px;
+  margin: 40px auto;
+  max-width: 760px;
+  background: #0d0d0d;                /* tema gelap */
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.05);
+  text-align: center;
+}
+
+#chatbot-section h2 {
+  font-family: Montserrat, sans-serif;
+  color: #FFA000;                      /* aksen oranye */
+  font-size: 28px;
+  margin: 0 0 12px;
+  letter-spacing: .3px;
+}
+
+#chatbot-section p {
+  font-family: Roboto, sans-serif;
+  color: #d9d9d9;
+  font-size: 16px;
+  margin: 0 0 28px;
+}
+
+/* ===== Tombol dengan animasi glow + shine ===== */
+.btn-chatbot {
+  position: relative;
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  color: #0d0d0d;
+  background: #FFA000;
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  will-change: transform;
+  overflow: hidden;
+}
+
+/* Pulsing glow lembut di sekitar tombol */
+.btn-chatbot::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: radial-gradient(60% 120% at 50% 50%, rgba(255,160,0,.45), transparent 60%);
+  filter: blur(10px);
+  z-index: -1;
+  animation: pulseGlow 2.8s ease-in-out infinite;
+}
+
+/* Shine/garis menyapu saat hover */
+.btn-chatbot::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -40%;
+  width: 40%; height: 100%;
+  transform: skewX(-20deg);
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.35) 45%, transparent 90%);
+  opacity: 0;
+  transition: transform .8s ease, opacity .3s ease;
+}
+
+.btn-chatbot:hover {
+  background: #e69100;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0,0,0,.5);
+}
+.btn-chatbot:hover::after {
+  opacity: 1;
+  transform: skewX(-20deg) translateX(250%);
+}
+
+/* ===== Orbs dekoratif di background ===== */
+.bg-orb {
+  position: absolute;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(50px);
+  opacity: .25;
+  background: radial-gradient(circle at 30% 30%, #FFA000 0%, rgba(255,160,0,.5) 40%, transparent 70%);
+  animation: float 8s ease-in-out infinite;
+}
+.orb1 { right: -70px; top: -70px; animation-delay: 0s; }
+.orb2 { left: -80px; bottom: -80px; animation-delay: 1.2s; }
+
+/* ===== Animasi masuk section ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: riseFade .7s ease-out .15s forwards;
+}
+
+/* ===== Keyframes ===== */
+@keyframes riseFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: .35; filter: blur(10px); }
+  50%      { opacity: .6;  filter: blur(16px); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-14px) scale(1.04); }
+}
+
+/* ===== Aksesibilitas: kurangi gerak jika diinginkan pengguna ===== */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .btn-chatbot::before, .btn-chatbot::after, .bg-orb {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.back-btn {
+  background: #FFA000;
+  color: #0d0d0d;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: Montserrat, sans-serif;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.back-btn:hover {
+  background: #e69100;
+}

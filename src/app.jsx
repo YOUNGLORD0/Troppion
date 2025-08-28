@@ -1,5 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { marked } from "marked";
+import {
+  API_CHAT_URL,
+  SESSION_ID,
+  TEMPERATURE,
+  MAX_FILES,
+  ALLOWED_MIME,
+  AUTH_BEARER,
+} from "./lib/config";
 
 export default function App() {
   const [messages, setMessages] = useState([
@@ -8,7 +16,7 @@ export default function App() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [style, setStyle] = useState("comprehensive");
-  const [files, setFiles] = useState([]); // ⬅️ simpan File[] untuk preview & upload
+  const [files, setFiles] = useState([]); // simpan File[] untuk preview & upload
   const listRef = useRef(null);
   const abortRef = useRef(null);
 
@@ -18,10 +26,10 @@ export default function App() {
 
   function onPickFiles(e) {
     const picked = Array.from(e.target.files || []);
-    // filter tipe dan batasi jumlah
-    const allowed = ["image/png", "image/jpeg", "image/webp"];
-    const next = picked.filter(f => allowed.includes(f.type)).slice(0, 5);
-    setFiles(prev => [...prev, ...next].slice(0, 5));
+    const next = picked
+      .filter(f => ALLOWED_MIME.includes(f.type))
+      .slice(0, MAX_FILES - files.length);
+    setFiles(prev => [...prev, ...next].slice(0, MAX_FILES));
     e.target.value = ""; // reset agar bisa pilih file yang sama lagi jika perlu
   }
 
@@ -35,11 +43,17 @@ export default function App() {
       fr.onload = () => {
         const dataUrl = fr.result; // "data:image/png;base64,AAAA..."
         const base64 = String(dataUrl).split(",")[1] || "";
-        resolve({ mime: file.type, data: base64 });
+        resolve({ mime: file.type, data: base64, name: file.name, size: file.size });
       };
       fr.onerror = reject;
       fr.readAsDataURL(file);
     });
+  }
+
+  function stopStreaming() {
+    try { abortRef.current?.abort(); } catch {}
+    abortRef.current = null;
+    setIsLoading(false);
   }
 
   async function sendMessage(e) {
@@ -49,7 +63,6 @@ export default function App() {
 
     setInput("");
     setIsLoading(true);
-    // tampilkan pesan user (teks saja biar rapi; gambar akan dipreview terpisah)
     if (text) setMessages(prev => [...prev, { role: "user", content: text }]);
 
     // convert semua files ke base64
@@ -61,7 +74,6 @@ export default function App() {
       setMessages(prev => [...prev, { role: "assistant", content: `⚠️ Gagal membaca gambar: ${err?.message || err}` }]);
       return;
     }
-    // reset file list setelah terkirim
     setFiles([]);
 
     // streaming SSE
@@ -69,15 +81,19 @@ export default function App() {
     abortRef.current = ac;
 
     try {
-      const res = await fetch("/api/chat", {
+      const headers = { "Content-Type": "application/json" };
+      if (AUTH_BEARER) headers["Authorization"] = `Bearer ${AUTH_BEARER}`;
+
+      const res = await fetch(API_CHAT_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({
           message: text,
-          images: packedImages,      // ⬅️ kirim ke server
-          sessionId: "troppion",
+          images: packedImages,
+          sessionId: SESSION_ID,
           answerStyle: style,
-          temperature: 0.3
+          temperature: TEMPERATURE,
+          // tambahkan field lain yang backend-mu perlukan di sini
         }),
         signal: ac.signal,
       });
@@ -133,16 +149,22 @@ export default function App() {
                 return out;
               });
             }
-          } catch { /* ignore non-JSON */ }
+          } catch {
+            // abaikan non-JSON
+          }
         }
       }
 
       setIsLoading(false);
       abortRef.current = null;
     } catch (err) {
+      if (err?.name === "AbortError") {
+        setMessages(prev => [...prev, { role: "assistant", content: "⏹️ Dihentikan." }]);
+      } else {
+        setMessages(prev => [...prev, { role: "assistant", content: `⚠️ Gagal memuat: ${err?.message || err}` }]);
+      }
       setIsLoading(false);
       abortRef.current = null;
-      setMessages(prev => [...prev, { role: "assistant", content: `⚠️ Gagal memuat: ${err?.message || err}` }]);
     }
   }
 
@@ -164,13 +186,19 @@ export default function App() {
             📎 Gambar
             <input
               type="file"
-              accept="image/png,image/jpeg,image/webp"
+              accept={ALLOWED_MIME.join(",")}
               multiple
               onChange={onPickFiles}
               className="ghost"
               style={{ display: "none" }}
             />
           </label>
+
+          {isLoading && (
+            <button type="button" onClick={stopStreaming} className="ghost" title="Hentikan streaming">
+              ⏹️ Stop
+            </button>
+          )}
         </div>
       </header>
 
@@ -241,5 +269,7 @@ function Preview({ file, onRemove }) {
         ✕
       </button>
     </div>
+    
   );
+  
 }
